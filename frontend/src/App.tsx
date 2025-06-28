@@ -88,12 +88,12 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      {/* Top Navigation Bar */}
-      <AppBar
-        position="static"
-        elevation={0}
-        sx={{
-          borderBottom: 1,
+      {/* ... AppBar component ... */}
+      <AppBar 
+        position="static" 
+        elevation={0} 
+        sx={{ 
+          borderBottom: 1, 
           borderColor: 'divider',
           background: 'linear-gradient(to right, #1a1a1a, #242424)', // Subtle gradient
           boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.2)', // Add a subtle shadow to app bar
@@ -113,10 +113,11 @@ function App() {
         display: 'flex',
         gap: 2,
         flexWrap: 'wrap',
-        minHeight: 'calc(100vh - 64px)',
-        alignItems: 'flex-start',
-        background: 'repeating-linear-gradient(-45deg, #1a1a1a 0px, #1a1a1a 2px, transparent 2px, transparent 4px)', // Subtle background pattern
-        backgroundColor: '#121212', // Fallback background color
+        // MODIFICATION: Set a specific height and allow children to stretch
+        height: 'calc(100vh - 64px)', // 64px is the default AppBar height
+        alignItems: 'stretch', // This will make all panels the same height
+        background: 'repeating-linear-gradient(-45deg, #1a1a1a 0px, #1a1a1a 2px, transparent 2px, transparent 4px)',
+        backgroundColor: '#121212',
       }}>
         {/* Left Panel */}
         <Box sx={{
@@ -148,24 +149,7 @@ function App() {
           <RightPanel />
         </Box>
       </Box>
-      {/* Global Scrollbar Styling */}
-      <style>{`
-        ::-webkit-scrollbar {
-          width: 8px;
-          height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-          background: #2e2e2e;
-          border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: #555;
-          border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: #777;
-        }
-      `}</style>
+      {/* ... style tag ... */}
     </ThemeProvider>
   );
 }

@@ -50,7 +50,7 @@ export const LeftPanel = () => {
   };
 
   return (
-    <Paper sx={{ padding: 1, height: '90vh', display: 'flex', flexDirection: 'column', boxShadow: 3, borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.12)' }}> {/* Added border for outline */}
+    <Paper sx={{ padding: 1, height: '100%', display: 'flex', flexDirection: 'column', boxShadow: 3, borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.12)' }}> {/* Added border for outline */}
       <Typography variant="h6" sx={{ mb: 1, px: 1 }}>Referendum Pipeline</Typography>
 
       {/* Tabs Navigation */}

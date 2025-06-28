@@ -27,7 +27,7 @@ export const CentralStage = () => {
   const noPercentage = 100 - yesPercentage;
 
   return (
-    <Box>
+    <Box sx={{ height: '100%', overflowY: 'auto', p: 1 }}>
       {/* Top section with referendum title */}
       <Typography variant="h4" component="h1" align="center" gutterBottom>
         {featuredReferendum.title}

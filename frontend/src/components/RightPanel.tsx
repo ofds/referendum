@@ -5,7 +5,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite'; // Example icon for pop
 
 export const RightPanel = () => {
   return (
-    <Paper sx={{ padding: 2, height: '90vh', boxShadow: 3, borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.12)' }}> {/* Added border for outline */}
+    <Paper sx={{ padding: 2, height: '100%', boxShadow: 3, borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.12)' }}> {/* Added border for outline */}
       <Typography variant="h6" sx={{ mb: 2 }}>Discussion Forum</Typography> {/* Added margin bottom */}
       <Box sx={{ flexGrow: 1, overflowY: 'auto' }}> {/* Makes content scrollable */}
         <List>
