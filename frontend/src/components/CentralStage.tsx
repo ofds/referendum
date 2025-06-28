@@ -7,21 +7,25 @@ import ForumIcon from '@mui/icons-material/Forum';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
-// --- Mock Data for Demonstration ---
-const featuredReferendum = {
-  title: "Should the city invest in a new public transportation system?",
-  description: "This referendum proposes a significant investment in upgrading and expanding the city's public transportation network, including new bus routes, light rail extensions, and improved accessibility features. The goal is to reduce traffic congestion and carbon emissions.", // Added description
+// Define the shape of the referendum data object
+interface Referendum {
+  title: string;
+  description: string;
   votes: {
-    yes: 748523,
-    no: 412987,
-  },
-  timeRemaining: "15 Days, 8 Hours",
-  totalComments: 4281
-};
-// ------------------------------------
+    yes: number;
+    no: number;
+  };
+  timeRemaining: string;
+  totalComments: number;
+}
 
-export const CentralStage = () => {
-  // Calculate vote percentages from mock data
+// Define the props for this component
+interface CentralStageProps {
+  featuredReferendum: Referendum;
+}
+
+export const CentralStage: React.FC<CentralStageProps> = ({ featuredReferendum }) => {
+  // Calculate vote percentages from the passed-in props
   const totalVotes = featuredReferendum.votes.yes + featuredReferendum.votes.no;
   const yesPercentage = (featuredReferendum.votes.yes / totalVotes) * 100;
   const noPercentage = 100 - yesPercentage;
@@ -32,7 +36,7 @@ export const CentralStage = () => {
       <Typography variant="h4" component="h1" align="center" gutterBottom>
         {featuredReferendum.title}
       </Typography>
-      <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 3 }}> {/* Referendum Description */}
+      <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 3 }}>
         {featuredReferendum.description}
       </Typography>
 
@@ -62,21 +66,21 @@ export const CentralStage = () => {
             mb={3}
           >
             {/* Stat: Total Votes */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}> {/* Added border color for outline variant */}
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}>
               <HowToVoteIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{totalVotes.toLocaleString()}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Total Votes Cast</Typography>
             </Paper>
 
             {/* Stat: Time Remaining */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}> {/* Added border color */}
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}>
               <AccessTimeIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{featuredReferendum.timeRemaining}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Time Remaining</Typography>
             </Paper>
-
+            
             {/* Stat: Discussion Count */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}> {/* Added border color */}
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}>
               <ForumIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{featuredReferendum.totalComments.toLocaleString()}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Total Comments</Typography>
