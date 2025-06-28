@@ -74,7 +74,7 @@ export const CentralStage = () => {
               <Typography variant="h6">{featuredReferendum.timeRemaining}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Time Remaining</Typography>
             </Paper>
-            
+
             {/* Stat: Discussion Count */}
             <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}> {/* Added border color */}
               <ForumIcon sx={{ fontSize: 40 }} color="primary" />

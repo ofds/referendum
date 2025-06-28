@@ -89,11 +89,11 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       {/* Top Navigation Bar */}
-      <AppBar 
-        position="static" 
-        elevation={0} 
-        sx={{ 
-          borderBottom: 1, 
+      <AppBar
+        position="static"
+        elevation={0}
+        sx={{
+          borderBottom: 1,
           borderColor: 'divider',
           background: 'linear-gradient(to right, #1a1a1a, #242424)', // Subtle gradient
           boxShadow: '0px 2px 10px rgba(0, 0, 0, 0.2)', // Add a subtle shadow to app bar
