@@ -1,6 +1,10 @@
 // src/components/LeftPanel.tsx
 import React from 'react';
-import { Paper, Typography, Box, Tabs, Tab } from '@mui/material';
+import { Paper, Typography, Box, Tabs, Tab, List, ListItem, ListItemText, ListItemIcon } from '@mui/material'; // Imported List, ListItem, ListItemText, ListItemIcon
+import EventNoteIcon from '@mui/icons-material/EventNote'; // Example icon for Scheduled
+import StarsIcon from '@mui/icons-material/Stars'; // Example icon for Lottery Candidates
+import LightbulbIcon from '@mui/icons-material/Lightbulb'; // Example icon for Proposals
+
 
 // Define props for the TabPanel to hide/show content based on selected tab
 interface TabPanelProps {
@@ -22,7 +26,7 @@ function CustomTabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 1 }}> {/* Reduced padding for compact list */}
+        <Box sx={{ p: 1 }}>
           {children}
         </Box>
       )}
@@ -46,8 +50,8 @@ export const LeftPanel = () => {
   };
 
   return (
-    <Paper sx={{ padding: 1, height: '90vh', display: 'flex', flexDirection: 'column', boxShadow: 3, borderRadius: '12px' }}> {/* Added boxShadow and borderRadius */}
-      <Typography variant="h6" sx={{ mb: 1, px: 1 }}>Referendum Pipeline</Typography> {/* Added horizontal padding */}
+    <Paper sx={{ padding: 1, height: '90vh', display: 'flex', flexDirection: 'column', boxShadow: 3, borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.12)' }}> {/* Added border for outline */}
+      <Typography variant="h6" sx={{ mb: 1, px: 1 }}>Referendum Pipeline</Typography>
 
       {/* Tabs Navigation */}
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -59,19 +63,51 @@ export const LeftPanel = () => {
       </Box>
 
       {/* Tab Content */}
-      <Box sx={{ flexGrow: 1, overflowY: 'auto', px: 1, pt: 1 }}> {/* Makes content scrollable if it overflows, added padding */}
+      <Box sx={{ flexGrow: 1, overflowY: 'auto', px: 1, pt: 1 }}>
         <CustomTabPanel value={value} index={0}>
           <Typography variant="body2" sx={{ mb: 1 }}>List of Scheduled Referendums will go here.</Typography>
-          {/* Example placeholder cards - remove later */}
-          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Scheduled Item 1</Paper>
-          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Scheduled Item 2</Paper>
+          {/* Example placeholder list items */}
+          <List dense>
+            <Paper sx={{ mb: 1, borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <ListItem>
+                <ListItemIcon>
+                  <EventNoteIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Scheduled Item 1" secondary="Vote ends: 2025-07-15" />
+              </ListItem>
+            </Paper>
+            <Paper sx={{ mb: 1, borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <ListItem>
+                <ListItemIcon>
+                  <EventNoteIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Scheduled Item 2" secondary="Vote ends: 2025-08-01" />
+              </ListItem>
+            </Paper>
+          </List>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={1}>
           <Typography variant="body2" sx={{ mb: 1 }}>List of Lottery Candidates (=10 votes) will go here.</Typography>
-          {/* Example placeholder cards - remove later */}
-          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Candidate A (15 tickets)</Paper>
-          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Candidate B (22 tickets)</Paper>
+          {/* Example placeholder list items */}
+          <List dense>
+            <Paper sx={{ mb: 1, borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <ListItem>
+                <ListItemIcon>
+                  <StarsIcon color="secondary" />
+                </ListItemIcon>
+                <ListItemText primary="Candidate A" secondary="15 tickets (Avg. 7.5 votes)" />
+              </ListItem>
+            </Paper>
+            <Paper sx={{ mb: 1, borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <ListItem>
+                <ListItemIcon>
+                  <StarsIcon color="secondary" />
+                </ListItemIcon>
+                <ListItemText primary="Candidate B" secondary="22 tickets (Avg. 11 votes)" />
+              </ListItem>
+            </Paper>
+          </List>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={2}>
@@ -94,9 +130,25 @@ export const LeftPanel = () => {
                 Propose a Political Topic
             </Paper>
           </Box>
-          {/* Example placeholder cards - remove later */}
-          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Proposal X (5 votes)</Paper>
-          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Proposal Y (2 votes)</Paper>
+          {/* Example placeholder list items */}
+          <List dense>
+            <Paper sx={{ mb: 1, borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <ListItem>
+                <ListItemIcon>
+                  <LightbulbIcon color="error" />
+                </ListItemIcon>
+                <ListItemText primary="Proposal X" secondary="Votes: 5" />
+              </ListItem>
+            </Paper>
+            <Paper sx={{ mb: 1, borderRadius: '8px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+              <ListItem>
+                <ListItemIcon>
+                  <LightbulbIcon color="error" />
+                </ListItemIcon>
+                <ListItemText primary="Proposal Y" secondary="Votes: 2" />
+              </ListItem>
+            </Paper>
+          </List>
         </CustomTabPanel>
       </Box>
     </Paper>

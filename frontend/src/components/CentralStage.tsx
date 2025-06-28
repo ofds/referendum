@@ -1,15 +1,16 @@
 // src/components/CentralStage.tsx
 import React from 'react';
-import { Paper, Typography, Box, LinearProgress, Button, Stack, Card, CardContent } from '@mui/material'; // Import Card, CardContent
+import { Paper, Typography, Box, LinearProgress, Button, Stack, Card, CardContent } from '@mui/material';
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ForumIcon from '@mui/icons-material/Forum';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp'; // Import ThumbUpIcon
-import ThumbDownIcon from '@mui/icons-material/ThumbDown'; // Import ThumbDownIcon
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 
 // --- Mock Data for Demonstration ---
 const featuredReferendum = {
   title: "Should the city invest in a new public transportation system?",
+  description: "This referendum proposes a significant investment in upgrading and expanding the city's public transportation network, including new bus routes, light rail extensions, and improved accessibility features. The goal is to reduce traffic congestion and carbon emissions.", // Added description
   votes: {
     yes: 748523,
     no: 412987,
@@ -31,6 +32,9 @@ export const CentralStage = () => {
       <Typography variant="h4" component="h1" align="center" gutterBottom>
         {featuredReferendum.title}
       </Typography>
+      <Typography variant="body1" align="center" color="text.secondary" sx={{ mb: 3 }}> {/* Referendum Description */}
+        {featuredReferendum.description}
+      </Typography>
 
       {/* The Vote Progress Bar (Oval) */}
       <Paper sx={{ p: 2, mb: 3, borderRadius: '50px', border: 1, borderColor: 'divider', boxShadow: 3 }}>
@@ -47,32 +51,32 @@ export const CentralStage = () => {
       </Paper>
 
       {/* Bottom rectangle for stats and actions - now a Card */}
-      <Card sx={{ p: 1, height: 'auto', boxShadow: 3, borderRadius: '12px' }}> {/* Added boxShadow and borderRadius */}
+      <Card sx={{ p: 1, height: 'auto', boxShadow: 3, borderRadius: '12px' }}>
         <CardContent>
           {/* Statistics Section - now using Stack for better control */}
           <Stack
-            direction={{ xs: 'column', sm: 'row' }} // Stack items vertically on xs, horizontally on sm and up
-            spacing={{ xs: 2, sm: 3 }} // Responsive spacing
+            direction={{ xs: 'column', sm: 'row' }}
+            spacing={{ xs: 2, sm: 3 }}
             justifyContent="space-around"
             alignItems="center"
-            mb={3} // Margin bottom for spacing with buttons
+            mb={3}
           >
             {/* Stat: Total Votes */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px' }}>
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}> {/* Added border color for outline variant */}
               <HowToVoteIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{totalVotes.toLocaleString()}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Total Votes Cast</Typography>
             </Paper>
 
             {/* Stat: Time Remaining */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px' }}>
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}> {/* Added border color */}
               <AccessTimeIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{featuredReferendum.timeRemaining}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Time Remaining</Typography>
             </Paper>
             
             {/* Stat: Discussion Count */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px' }}>
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px', borderColor: 'rgba(255, 255, 255, 0.12)' }}> {/* Added border color */}
               <ForumIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{featuredReferendum.totalComments.toLocaleString()}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Total Comments</Typography>
@@ -80,9 +84,9 @@ export const CentralStage = () => {
           </Stack>
 
           {/* Action Buttons - using Stack for simpler horizontal layout */}
-          <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 2 }}> {/* mt: 2 for margin-top */}
-            <Button variant="contained" color="success" size="large" startIcon={<ThumbUpIcon />} sx={{ borderRadius: '50px', px: 3 }}>Cast Your "Yes" Vote</Button> {/* Added icon and horizontal padding */}
-            <Button variant="contained" color="error" size="large" startIcon={<ThumbDownIcon />} sx={{ borderRadius: '50px', px: 3 }}>Cast Your "No" Vote</Button>   {/* Added icon and horizontal padding */}
+          <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 2 }}>
+            <Button variant="contained" color="success" size="large" startIcon={<ThumbUpIcon />} sx={{ borderRadius: '50px', px: 3, py: 1.5 }}>Cast Your "Yes" Vote</Button>
+            <Button variant="contained" color="error" size="large" startIcon={<ThumbDownIcon />} sx={{ borderRadius: '50px', px: 3, py: 1.5 }}>Cast Your "No" Vote</Button>
           </Stack>
         </CardContent>
       </Card>
