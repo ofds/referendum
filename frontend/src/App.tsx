@@ -1,6 +1,6 @@
 // src/App.tsx
 import React from 'react';
-import { Box, CssBaseline } from '@mui/material'; // Removed Grid import
+import { Box, CssBaseline } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { LeftPanel } from './components/LeftPanel';
 import { CentralStage } from './components/CentralStage';
@@ -27,8 +27,8 @@ function App() {
       }}>
         {/* Left Panel */}
         <Box sx={{
-          flex: { xs: '1 1 100%', md: '0 0 25%' }, // flex-grow, flex-shrink, flex-basis
-          maxWidth: { xs: '100%', md: '25%' }, // Explicit max-width to prevent overflow
+          flex: { xs: '1 1 100%', md: '0 0 calc(25% - 8px)' }, // Adjusted flex-basis for gap
+          maxWidth: { xs: '100%', md: 'calc(25% - 8px)' },     // Adjusted max-width for gap
           minWidth: 0, // Allow shrinking
           boxSizing: 'border-box', // Ensure padding/border is included in width
         }}>
@@ -37,8 +37,8 @@ function App() {
 
         {/* Central Stage */}
         <Box sx={{
-          flex: { xs: '1 1 100%', md: '0 0 50%' }, // flex-grow, flex-shrink, flex-basis
-          maxWidth: { xs: '100%', md: '50%' }, // Explicit max-width
+          flex: { xs: '1 1 100%', md: '0 0 calc(50% - 16px)' }, // Adjusted flex-basis for gap
+          maxWidth: { xs: '100%', md: 'calc(50% - 16px)' },     // Adjusted max-width for gap
           minWidth: 0, // Allow shrinking
           boxSizing: 'border-box',
         }}>
@@ -47,8 +47,8 @@ function App() {
 
         {/* Right Panel */}
         <Box sx={{
-          flex: { xs: '1 1 100%', md: '0 0 25%' }, // flex-grow, flex-shrink, flex-basis
-          maxWidth: { xs: '100%', md: '25%' }, // Explicit max-width
+          flex: { xs: '1 1 100%', md: '0 0 calc(25% - 8px)' }, // Adjusted flex-basis for gap
+          maxWidth: { xs: '100%', md: 'calc(25% - 8px)' },     // Adjusted max-width for gap
           minWidth: 0, // Allow shrinking
           boxSizing: 'border-box',
         }}>

@@ -31,7 +31,6 @@ export const CentralStage = () => {
 
       {/* The Vote Progress Bar (Oval) */}
       <Paper sx={{ p: 2, mb: 3, borderRadius: '50px', border: 1, borderColor: 'divider' }}>
-        {/* ADDED overflow: 'hidden' here */}
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, overflow: 'hidden' }}>
           <Typography variant="h6" color="success.main" sx={{ whiteSpace: 'nowrap' }}>Yes ({yesPercentage.toFixed(1)}%)</Typography>
           <LinearProgress
@@ -79,8 +78,8 @@ export const CentralStage = () => {
           {/* Action Buttons - now using Stack for simpler horizontal layout */}
           <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 3 }}> {/* mt: 3 for margin-top */}
             <Stack direction="row" spacing={2}> {/* Stack for buttons */}
-              <Button variant="contained" color="success" size="large">Cast Your "Yes" Vote</Button>
-              <Button variant="contained" color="error" size="large">Cast Your "No" Vote</Button>
+              <Button variant="contained" color="success" size="large" sx={{ borderRadius: '50px' }}>Cast Your "Yes" Vote</Button> {/* Added borderRadius */}
+              <Button variant="contained" color="error" size="large" sx={{ borderRadius: '50px' }}>Cast Your "No" Vote</Button>   {/* Added borderRadius */}
             </Stack>
           </Box>
 

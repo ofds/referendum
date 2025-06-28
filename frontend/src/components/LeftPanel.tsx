@@ -51,7 +51,7 @@ export const LeftPanel = () => {
 
       {/* Tabs Navigation */}
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="referendum pipeline tabs" variant="scrollable" scrollButtons="auto">
+        <Tabs value={value} onChange={handleChange} aria-label="referendum pipeline tabs" variant="fullWidth" >
           <Tab label="Scheduled" {...a11yProps(0)} />
           <Tab label="Lottery Candidates" {...a11yProps(1)} />
           <Tab label="Proposals (<10 Votes)" {...a11yProps(2)} />
@@ -78,14 +78,14 @@ export const LeftPanel = () => {
           <Typography variant="body2" sx={{ mb: 1 }}>List of Referendum Proposals (10 votes) will go here.</Typography>
           {/* Your "Propose a Political Topic" button will go here */}
           <Box sx={{ mb: 1, display: 'flex', justifyContent: 'center' }}>
-            <Paper component="button" sx={{
+          <Paper component="button" sx={{
                 width: '100%',
                 py: 1.5,
                 border: 'none',
-                backgroundColor: 'primary.main', // Example background color
-                color: 'primary.contrastText',  // Example text color
+                backgroundColor: 'primary.main',
+                color: 'primary.contrastText',
                 cursor: 'pointer',
-                borderRadius: '4px',
+                borderRadius: '50px', // Changed to 50px for pill shape
                 '&:hover': {
                     backgroundColor: 'primary.dark',
                 }
