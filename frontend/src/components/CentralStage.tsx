@@ -52,6 +52,10 @@ export const CentralStage: React.FC<CentralStageProps> = ({ featuredReferendum }
           />
           <Typography variant="body1" color="error.main" sx={{ whiteSpace: 'nowrap', fontWeight: 'bold' }}>No ({noPercentage.toFixed(1)}%)</Typography>
         </Box>
+        <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 2 }}>
+            <Button variant="contained" color="success" size="large" startIcon={<ThumbUpIcon />} sx={{ borderRadius: '50px', px: 3, py: 1.5 }}>Yes</Button>
+            <Button variant="contained" color="error" size="large" startIcon={<ThumbDownIcon />} sx={{ borderRadius: '50px', px: 3, py: 1.5 }}>No</Button>
+          </Stack>
       </Paper>
 
       {/* Bottom rectangle for stats and actions - now a Card */}
@@ -88,10 +92,7 @@ export const CentralStage: React.FC<CentralStageProps> = ({ featuredReferendum }
           </Stack>
 
           {/* Action Buttons - using Stack for simpler horizontal layout */}
-          <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 2 }}>
-            <Button variant="contained" color="success" size="large" startIcon={<ThumbUpIcon />} sx={{ borderRadius: '50px', px: 3, py: 1.5 }}>Cast Your "Yes" Vote</Button>
-            <Button variant="contained" color="error" size="large" startIcon={<ThumbDownIcon />} sx={{ borderRadius: '50px', px: 3, py: 1.5 }}>Cast Your "No" Vote</Button>
-          </Stack>
+          
         </CardContent>
       </Card>
     </Box>
