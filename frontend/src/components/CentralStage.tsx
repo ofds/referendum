@@ -89,10 +89,7 @@ export const CentralStage: React.FC<CentralStageProps> = ({ featuredReferendum }
               <Typography variant="h6">{featuredReferendum.totalComments.toLocaleString()}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Total Comments</Typography>
             </Paper>
-          </Stack>
-
-          {/* Action Buttons - using Stack for simpler horizontal layout */}
-          
+          </Stack>    
         </CardContent>
       </Card>
     </Box>
