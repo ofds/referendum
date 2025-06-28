@@ -1,9 +1,11 @@
 // src/components/CentralStage.tsx
 import React from 'react';
-import { Paper, Typography, Box, LinearProgress, Grid, Button, Stack } from '@mui/material'; // Import Stack
+import { Paper, Typography, Box, LinearProgress, Button, Stack, Card, CardContent } from '@mui/material'; // Import Card, CardContent
 import HowToVoteIcon from '@mui/icons-material/HowToVote';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ForumIcon from '@mui/icons-material/Forum';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'; // Import ThumbUpIcon
+import ThumbDownIcon from '@mui/icons-material/ThumbDown'; // Import ThumbDownIcon
 
 // --- Mock Data for Demonstration ---
 const featuredReferendum = {
@@ -21,6 +23,7 @@ export const CentralStage = () => {
   // Calculate vote percentages from mock data
   const totalVotes = featuredReferendum.votes.yes + featuredReferendum.votes.no;
   const yesPercentage = (featuredReferendum.votes.yes / totalVotes) * 100;
+  const noPercentage = 100 - yesPercentage;
 
   return (
     <Box>
@@ -30,61 +33,59 @@ export const CentralStage = () => {
       </Typography>
 
       {/* The Vote Progress Bar (Oval) */}
-      <Paper sx={{ p: 2, mb: 3, borderRadius: '50px', border: 1, borderColor: 'divider' }}>
+      <Paper sx={{ p: 2, mb: 3, borderRadius: '50px', border: 1, borderColor: 'divider', boxShadow: 3 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, overflow: 'hidden' }}>
-          <Typography variant="h6" color="success.main" sx={{ whiteSpace: 'nowrap' }}>Yes ({yesPercentage.toFixed(1)}%)</Typography>
+          <Typography variant="body1" color="success.main" sx={{ whiteSpace: 'nowrap', fontWeight: 'bold' }}>Yes ({yesPercentage.toFixed(1)}%)</Typography>
           <LinearProgress
             variant="determinate"
             value={yesPercentage}
             sx={{ height: 20, borderRadius: 10, flexGrow: 1 }}
             color="success"
           />
-          <Typography variant="h6" color="error.main" sx={{ whiteSpace: 'nowrap' }}>No ({(100 - yesPercentage).toFixed(1)}%)</Typography>
+          <Typography variant="body1" color="error.main" sx={{ whiteSpace: 'nowrap', fontWeight: 'bold' }}>No ({noPercentage.toFixed(1)}%)</Typography>
         </Box>
       </Paper>
 
-      {/* Bottom rectangle for stats and actions */}
-      <Paper sx={{ p: 3, height: 'auto' }}>
-        {/* Statistics Section - now using Grid V2 pattern */}
-        <Grid container spacing={3} columns={12} alignItems="center"> {/* columns=12 for the grid */}
-
-          {/* Stat: Total Votes - now a Box inside Grid container */}
-          <Box sx={{ width: { xs: '100%', sm: `${(4 / 12) * 100}%` } }}> {/* 4/12 = 33.33% for sm+ */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', height: '100%' }}> {/* height: '100%' for consistent height */}
+      {/* Bottom rectangle for stats and actions - now a Card */}
+      <Card sx={{ p: 1, height: 'auto', boxShadow: 3, borderRadius: '12px' }}> {/* Added boxShadow and borderRadius */}
+        <CardContent>
+          {/* Statistics Section - now using Stack for better control */}
+          <Stack
+            direction={{ xs: 'column', sm: 'row' }} // Stack items vertically on xs, horizontally on sm and up
+            spacing={{ xs: 2, sm: 3 }} // Responsive spacing
+            justifyContent="space-around"
+            alignItems="center"
+            mb={3} // Margin bottom for spacing with buttons
+          >
+            {/* Stat: Total Votes */}
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px' }}>
               <HowToVoteIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{totalVotes.toLocaleString()}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Total Votes Cast</Typography>
             </Paper>
-          </Box>
 
-          {/* Stat: Time Remaining - now a Box inside Grid container */}
-          <Box sx={{ width: { xs: '100%', sm: `${(4 / 12) * 100}%` } }}> {/* 4/12 = 33.33% for sm+ */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', height: '100%' }}>
+            {/* Stat: Time Remaining */}
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px' }}>
               <AccessTimeIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{featuredReferendum.timeRemaining}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Time Remaining</Typography>
             </Paper>
-          </Box>
-          
-          {/* Stat: Discussion Count - now a Box inside Grid container */}
-          <Box sx={{ width: { xs: '100%', sm: `${(4 / 12) * 100}%` } }}> {/* 4/12 = 33.33% for sm+ */}
-            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', height: '100%' }}>
+            
+            {/* Stat: Discussion Count */}
+            <Paper variant="outlined" sx={{ p: 2, textAlign: 'center', flexGrow: 1, width: { xs: '100%', sm: 'auto' }, borderRadius: '12px' }}>
               <ForumIcon sx={{ fontSize: 40 }} color="primary" />
               <Typography variant="h6">{featuredReferendum.totalComments.toLocaleString()}</Typography>
               <Typography variant="subtitle1" color="text.secondary">Total Comments</Typography>
             </Paper>
-          </Box>
+          </Stack>
 
-          {/* Action Buttons - now using Stack for simpler horizontal layout */}
-          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 3 }}> {/* mt: 3 for margin-top */}
-            <Stack direction="row" spacing={2}> {/* Stack for buttons */}
-              <Button variant="contained" color="success" size="large" sx={{ borderRadius: '50px' }}>Cast Your "Yes" Vote</Button> {/* Added borderRadius */}
-              <Button variant="contained" color="error" size="large" sx={{ borderRadius: '50px' }}>Cast Your "No" Vote</Button>   {/* Added borderRadius */}
-            </Stack>
-          </Box>
-
-        </Grid>
-      </Paper>
+          {/* Action Buttons - using Stack for simpler horizontal layout */}
+          <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 2 }}> {/* mt: 2 for margin-top */}
+            <Button variant="contained" color="success" size="large" startIcon={<ThumbUpIcon />} sx={{ borderRadius: '50px', px: 3 }}>Cast Your "Yes" Vote</Button> {/* Added icon and horizontal padding */}
+            <Button variant="contained" color="error" size="large" startIcon={<ThumbDownIcon />} sx={{ borderRadius: '50px', px: 3 }}>Cast Your "No" Vote</Button>   {/* Added icon and horizontal padding */}
+          </Stack>
+        </CardContent>
+      </Card>
     </Box>
   );
 };

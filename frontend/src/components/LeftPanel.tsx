@@ -46,8 +46,8 @@ export const LeftPanel = () => {
   };
 
   return (
-    <Paper sx={{ padding: 1, height: '90vh', display: 'flex', flexDirection: 'column'  }}>
-      <Typography variant="h6" sx={{ mb: 1 }}>Referendum Pipeline</Typography>
+    <Paper sx={{ padding: 1, height: '90vh', display: 'flex', flexDirection: 'column', boxShadow: 3, borderRadius: '12px' }}> {/* Added boxShadow and borderRadius */}
+      <Typography variant="h6" sx={{ mb: 1, px: 1 }}>Referendum Pipeline</Typography> {/* Added horizontal padding */}
 
       {/* Tabs Navigation */}
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -59,19 +59,19 @@ export const LeftPanel = () => {
       </Box>
 
       {/* Tab Content */}
-      <Box sx={{ flexGrow: 1, overflowY: 'auto' }}> {/* Makes content scrollable if it overflows */}
+      <Box sx={{ flexGrow: 1, overflowY: 'auto', px: 1, pt: 1 }}> {/* Makes content scrollable if it overflows, added padding */}
         <CustomTabPanel value={value} index={0}>
           <Typography variant="body2" sx={{ mb: 1 }}>List of Scheduled Referendums will go here.</Typography>
           {/* Example placeholder cards - remove later */}
-          <Paper sx={{ p: 1, mb: 1 }}>Scheduled Item 1</Paper>
-          <Paper sx={{ p: 1, mb: 1 }}>Scheduled Item 2</Paper>
+          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Scheduled Item 1</Paper>
+          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Scheduled Item 2</Paper>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={1}>
           <Typography variant="body2" sx={{ mb: 1 }}>List of Lottery Candidates (=10 votes) will go here.</Typography>
           {/* Example placeholder cards - remove later */}
-          <Paper sx={{ p: 1, mb: 1 }}>Candidate A (15 tickets)</Paper>
-          <Paper sx={{ p: 1, mb: 1 }}>Candidate B (22 tickets)</Paper>
+          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Candidate A (15 tickets)</Paper>
+          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Candidate B (22 tickets)</Paper>
         </CustomTabPanel>
 
         <CustomTabPanel value={value} index={2}>
@@ -88,14 +88,15 @@ export const LeftPanel = () => {
                 borderRadius: '50px', // Changed to 50px for pill shape
                 '&:hover': {
                     backgroundColor: 'primary.dark',
+                    boxShadow: 6, // Subtle box shadow on hover
                 }
             }}>
                 Propose a Political Topic
             </Paper>
           </Box>
           {/* Example placeholder cards - remove later */}
-          <Paper sx={{ p: 1, mb: 1 }}>Proposal X (5 votes)</Paper>
-          <Paper sx={{ p: 1, mb: 1 }}>Proposal Y (2 votes)</Paper>
+          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Proposal X (5 votes)</Paper>
+          <Paper sx={{ p: 1, mb: 1, borderRadius: '8px' }}>Proposal Y (2 votes)</Paper>
         </CustomTabPanel>
       </Box>
     </Paper>
